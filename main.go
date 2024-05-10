@@ -41,6 +41,6 @@ func main() {
 }
 
 func greeting() string {
-	greeting := "Hello Daggernauts!"
+	greeting := "Hello KCD Argentina!"
 	return fmt.Sprintf("{\"greeting\":\"%s\"}", greeting)
 }
