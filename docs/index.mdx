@@ -1,10 +1,10 @@
 # Greetings API Documentation
 
-Welcome to the Greetings API! This simple service allows you to retrieve greetings in various languages.
+Welcome to the Greetings API! This simple service allows you to retrieve greetings and farewells in various languages.
 
 ## Using the REST API
 
-The Greetings API provides two main endpoints for retrieving greetings:
+The Greetings API provides endpoints for retrieving both greetings and farewells:
 
 ### Get a Random Greeting
 
@@ -39,29 +39,62 @@ GET http://locahost:8080/french
 }
 ```
 
+### Get a Random Farewell
+
+```
+GET http://locahost:8080/farewell
+```
+
+**Example Response:**
+```json
+{
+  "farewell": "Goodbye, World!"
+}
+```
+
+### Get a Farewell in a Specific Language
+
+```
+GET http://locahost:8080/farewell/{language}
+```
+
+Replace `{language}` with one of the supported language codes.
+
+**Example Request:**
+```
+GET http://locahost:8080/farewell/french
+```
+
+**Example Response:**
+```json
+{
+  "farewell": "Au revoir, Monde !"
+}
+```
+
 ## Supported Languages
 
-The API currently supports the following languages:
+The API currently supports the following languages for both greetings and farewells:
 
-| Language Code | Greeting |
-|---------------|----------|
-| english       | Hello, World! |
-| british       | Hello, World! Cheers! |
-| french        | Bonjour, Monde ! |
-| italian       | Ciao, Mondo! |
-| spanish       | ¡Hola, Mundo! |
-| german        | Hallo, Welt! |
-| mandarin      | 你好，世界！ |
-| hindi         | नमस्ते दुनिया! |
-| arabic        | مرحبا بالعالم! |
-| bengali       | ওহে বিশ্ব! |
-| russian       | Привет, мир! |
-| portuguese    | Olá, Mundo! |
-| urdu          | ہیلو، دنیا! |
-| indonesian    | Halo Dunia! |
-| japanese      | こんにちは世界！ |
-| marathi       | नमस्कार जग! |
-| telugu        | హలో ప్రపంచం! |
+| Language Code | Greeting | Farewell |
+|---------------|----------|----------|
+| english       | Hello, World! | Goodbye, World! |
+| british       | Hello, World! Cheers! | Goodbye, World! Cheerio! |
+| french        | Bonjour, Monde ! | Au revoir, Monde ! |
+| italian       | Ciao, Mondo! | Ciao, Mondo! |
+| spanish       | ¡Hola, Mundo! | ¡Adiós, Mundo! |
+| german        | Hallo, Welt! | Auf Wiedersehen, Welt! |
+| mandarin      | 你好，世界！ | 再见，世界！ |
+| hindi         | नमस्ते दुनिया! | अलविदा दुनिया! |
+| arabic        | مرحبا بالعالم! | وداعا بالعالم! |
+| bengali       | ওহে বিশ্ব! | বিদায় বিশ্ব! |
+| russian       | Привет, мир! | До свидания, мир! |
+| portuguese    | Olá, Mundo! | Tchau, Mundo! |
+| urdu          | ہیلو، دنیا! | الوداع، دنیا! |
+| indonesian    | Halo Dunia! | Selamat tinggal Dunia! |
+| japanese      | こんにちは世界！ | さようなら世界！ |
+| marathi       | नमस्कार जग! | निरोप जग! |
+| telugu        | హలో ప్రపంచం! | వీడ్కోలు ప్రపంచం! |
 
 ## Using the Greetings Website
 
@@ -80,10 +113,17 @@ Currently, there are no rate limits on the API usage, but please be respectful o
 
 If you request a language that doesn't exist, the API will return an appropriate error message with a 400 status code.
 
-Example error response:
+Example error response for greetings:
 ```json
 {
   "error": "no greeting found for language 'klingon'"
+}
+```
+
+Example error response for farewells:
+```json
+{
+  "error": "no farewell found for language 'klingon'"
 }
 ```
 
